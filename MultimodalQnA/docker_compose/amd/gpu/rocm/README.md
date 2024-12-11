@@ -10,46 +10,9 @@ After launching your instance, you can connect to it using SSH (for Linux instan
 
 Since the `compose.yaml` will consume some environment variables, you need to setup them in advance as below.
 
-**Export the value of the public IP address of your Xeon server to the `host_ip` environment variable**
+Please use "./set_env.sh" (. set_env.sh) script to set up all needed Environment Variables.
 
-> Change the External_Public_IP below with the actual IPV4 value
-
-```
-export host_ip="External_Public_IP"
-```
-
-**Append the value of the public IP address to the no_proxy list**
-
-```bash
-export your_no_proxy=${your_no_proxy},"External_Public_IP"
-```
-
-```bash
-export no_proxy=${your_no_proxy}
-export http_proxy=${your_http_proxy}
-export https_proxy=${your_http_proxy}
-export EMBEDDER_PORT=6006
-export MMEI_EMBEDDING_ENDPOINT="http://${host_ip}:$EMBEDDER_PORT/v1/encode"
-export MM_EMBEDDING_PORT_MICROSERVICE=6000
-export REDIS_URL="redis://${host_ip}:6379"
-export REDIS_HOST=${host_ip}
-export INDEX_NAME="mm-rag-redis"
-export LLAVA_SERVER_PORT=8399
-export LVM_ENDPOINT="http://${host_ip}:8399"
-export EMBEDDING_MODEL_ID="BridgeTower/bridgetower-large-itm-mlm-itc"
-export LVM_MODEL_ID="llava-hf/llava-1.5-7b-hf"
-export WHISPER_MODEL="base"
-export MM_EMBEDDING_SERVICE_HOST_IP=${host_ip}
-export MM_RETRIEVER_SERVICE_HOST_IP=${host_ip}
-export LVM_SERVICE_HOST_IP=${host_ip}
-export MEGA_SERVICE_HOST_IP=${host_ip}
-export BACKEND_SERVICE_ENDPOINT="http://${host_ip}:8888/v1/multimodalqna"
-export DATAPREP_INGEST_SERVICE_ENDPOINT="http://${host_ip}:6007/v1/ingest_with_text"
-export DATAPREP_GEN_TRANSCRIPT_SERVICE_ENDPOINT="http://${host_ip}:6007/v1/generate_transcripts"
-export DATAPREP_GEN_CAPTION_SERVICE_ENDPOINT="http://${host_ip}:6007/v1/generate_captions"
-export DATAPREP_GET_FILE_ENDPOINT="http://${host_ip}:6007/v1/dataprep/get_files"
-export DATAPREP_DELETE_FILE_ENDPOINT="http://${host_ip}:6007/v1/dataprep/delete_files"
-```
+**Export the value of the public IP address of your server to the `host_ip` environment variable**
 
 Note: Please replace with `host_ip` with you external IP address, do not use localhost.
 
